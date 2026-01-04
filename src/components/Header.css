@@ -1,0 +1,362 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 1.5rem 0;
+    transition: all var(--duration-slow) var(--ease-luxury);
+    background: var(--color-dark);
+    /* Black Navbar */
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--theme-border);
+}
+
+.header.scrolled {
+    background: var(--color-dark);
+    /* Black Navbar */
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--theme-border);
+    box-shadow: 0 4px 30px rgba(207, 181, 59, 0.2);
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    /* Essential for absolute centering of logo */
+}
+
+.logo-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 10;
+}
+
+.logo {
+    font-family: 'Cormorant Garamond', serif;
+    /* Luxury Stylish Serif (Primor Alt) */
+    font-size: 3rem;
+    /* Cormorant runs small, needs size */
+    font-weight: 600;
+    /* SemiBold looks best for logo */
+    letter-spacing: 0.05em;
+    font-style: italic;
+    /* Use Italic for that "Stylish" Primor vibe */
+    background: linear-gradient(135deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-transform: capitalize;
+    /* "Stylish" often implies mixed case or proper case */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Desktop Nav */
+.desktop-nav {
+    display: none;
+    /* Mobile first, shown in media query below */
+}
+
+.nav-link {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-right: 2rem;
+    color: var(--theme-primary);
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    position: relative;
+    opacity: 0.9;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    opacity: 1;
+    text-shadow: 0 0 10px rgba(244, 196, 48, 0.5);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #FCF6BA, #B38728, transparent);
+    transition: width var(--duration-fast) var(--ease-luxury);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.icon-btn {
+    transition: transform var(--duration-fast) var(--ease-luxury);
+    background: linear-gradient(var(--color-dark), var(--color-dark)) padding-box,
+        var(--gradient-gold) border-box;
+    /* Gradient Border Trick */
+    border: 1px solid transparent;
+    /* Essential for the trick */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: all 0.3s ease;
+}
+
+.icon-btn:hover {
+    transform: translateY(-2px);
+    background: var(--gradient-gold);
+    /* Full Gradient Fill */
+    border-color: transparent;
+    /* Remove border trick visual if needed, or let bg cover it */
+    opacity: 1;
+}
+
+/* Icons */
+.nav-icon {
+    stroke: var(--theme-primary);
+    /* Gold Icon */
+    fill: none;
+    transition: stroke 0.3s ease;
+}
+
+.icon-btn:hover .nav-icon {
+    stroke: var(--color-dark);
+    /* Black Icon on Hover */
+}
+
+.cart-btn {
+    position: relative;
+}
+
+.home-btn-text {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    padding: 0.4rem 0.8rem;
+    color: var(--theme-primary);
+    border: 1px solid var(--theme-primary);
+    transition: all 0.3s ease;
+}
+
+.icon-btn:hover .home-btn-text {
+    background: var(--gradient-gold);
+    color: var(--color-dark);
+    border-color: transparent;
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    font-size: 0.7rem;
+    color: #FFF;
+    background: #000;
+    /* Contrast against gold btn */
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-family: var(--font-sans);
+    border: 1px solid var(--color-gold-start);
+}
+
+/* Mobile Menu Trigger */
+.mobile-menu {
+    cursor: pointer;
+    z-index: 1001;
+    /* Above overlay */
+}
+
+/* Mobile Nav Overlay */
+/* Mobile Nav Overlay */
+.mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 60%;
+    /* Half screen / sidebar style */
+    min-width: 280px;
+    height: 100vh;
+    background: #000;
+    display: flex;
+    /* align-items: center; */
+    /* Keep vertical center */
+    justify-content: flex-start;
+    /* Align content to the left */
+    padding-left: 2rem;
+    padding-top: 5rem;
+    /* Add padding for left alignment */
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s var(--ease-luxury), visibility 0.4s, transform 0.4s ease;
+    transform: translateX(-100%);
+    /* Slide form left */
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
+    /* Shadow for depth */
+}
+
+.mobile-nav-overlay.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* Left align items */
+    gap: 1.5rem;
+    /* Reduce gap slightly */
+    width: 100%;
+}
+
+.mobile-nav-link {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    /* Reduced from 2rem */
+    color: var(--theme-primary);
+    text-transform: uppercase;
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s, transform 0.4s;
+    text-align: left;
+}
+
+.mobile-nav-overlay.open .mobile-nav-link {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered animation delays for links */
+.mobile-nav-overlay.open .mobile-nav-link:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.mobile-nav-overlay.open .mobile-nav-link:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.mobile-nav-overlay.open .mobile-nav-link:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+.mobile-nav-overlay.open .mobile-nav-link:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+
+/* ========================================= */
+/* RESPONSIVE BREAKPOINTS                    */
+/* ========================================= */
+
+/* ≤480px: Small Phone */
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .header-actions {
+        gap: 0.3rem;
+    }
+
+    .icon-btn {
+        width: 32px;
+        height: 32px;
+    }
+
+    .header {
+        padding: 0.8rem 0;
+    }
+}
+
+/* ≤576px: Phone (Standard Mobile) */
+@media (max-width: 576px) {
+
+    /* Ensure secondary icons are hidden on all phones */
+    .icon-btn:not(.cart-btn) {
+        display: none;
+    }
+}
+
+/* 577px - 991px: Tablet & Small Laptop (Hamburger Menu) */
+@media (min-width: 577px) and (max-width: 991px) {
+    .logo {
+        font-size: 2rem;
+    }
+
+    /* Show all icons on tablets */
+    .icon-btn:not(.cart-btn) {
+        display: flex;
+    }
+
+    .header-actions {
+        gap: 1rem;
+    }
+}
+
+/* ≥992px: Desktop & Laptop (Switch to Desktop Nav) */
+@media (min-width: 992px) {
+    .desktop-nav {
+        display: block;
+    }
+
+    .mobile-menu {
+        display: none;
+    }
+
+    .logo {
+        font-size: 2.5rem;
+        /* Laptop size */
+    }
+
+    .header-actions {
+        gap: 1.2rem;
+    }
+
+    /* Ensure all icons are visible */
+    .icon-btn:not(.cart-btn) {
+        display: flex;
+    }
+}
+
+/* ≥1200px: Large Desktop */
+@media (min-width: 1200px) {
+    .logo {
+        font-size: 3rem;
+        /* Full Luxury Size */
+    }
+
+    .header-actions {
+        gap: 1.5rem;
+    }
+
+    .nav-link {
+        margin-right: 2.5rem;
+        /* Spacious links */
+    }
+}

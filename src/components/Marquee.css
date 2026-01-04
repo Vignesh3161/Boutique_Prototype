@@ -1,0 +1,46 @@
+.marquee-container {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    /* padding: 1rem 0; */
+    padding: 10px 0;
+    background: var(--gradient-gold);
+    /* Gold Background */
+    border-top: 2px solid var(--color-dark);
+    /* Black Border */
+    border-bottom: 2px solid var(--color-dark);
+    /* Black Border */
+    margin-top: 5px;
+    /* Slight Gap from Hero */
+    /* margin-bottom: var(--space-lg); */
+    margin-bottom: 15px;
+}
+
+.marquee-content {
+    display: inline-block;
+    animation: scroll 20s linear infinite;
+}
+
+.marquee-text {
+    display: inline-block;
+    padding-right: 4rem;
+    font-family: var(--font-sans);
+    /* font-size: 1.5rem; */
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--color-dark);
+    /* Black Text */
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}

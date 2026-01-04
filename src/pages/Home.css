@@ -1,0 +1,239 @@
+.home {
+    width: 100%;
+}
+
+/* Hero */
+.hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out, transform 6s ease;
+    transform: scale(1.1);
+    z-index: -1;
+    filter: brightness(0.4) contrast(1.1);
+    /* Applied always for stability */
+}
+
+.hero-bg.active {
+    opacity: 1;
+    transform: scale(1);
+    /* Filter is now stable inherited */
+}
+
+.hero-pagination {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1rem;
+    z-index: 10;
+}
+
+.pagination-dot {
+    width: 60px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pagination-dot.active {
+    background: var(--color-gold-start);
+    width: 80px;
+}
+
+.hero-subtitle {
+    font-family: var(--font-sans);
+    letter-spacing: 0.3em;
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+}
+
+.hero-title {
+    font-size: 4.5rem;
+    margin-bottom: 3rem;
+}
+
+.italic {
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+}
+
+.cta-btn {
+    background: linear-gradient(var(--color-dark), var(--color-dark)) padding-box,
+        var(--gradient-gold) border-box;
+    border: 1px solid transparent;
+    padding: 1rem 3rem;
+    color: var(--color-gold-start);
+    /* Gold text */
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.8rem;
+    transition: all 0.4s ease;
+}
+
+.cta-btn:hover {
+    background: var(--gradient-gold);
+    color: var(--color-dark);
+    /* Black Text */
+    border-color: transparent;
+    box-shadow: 0 0 20px rgba(244, 196, 48, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Story */
+.story-section {
+    padding-top: var(--space-2xl);
+    padding-bottom: var(--space-md);
+    /* Reduced bottom space */
+    text-align: center;
+    max-width: 800px;
+}
+
+.story-title {
+    margin-bottom: var(--space-md);
+    background: var(--gradient-midnight);
+    /* Midnight Royale Gradient */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.story-text {
+    font-size: 1.5rem;
+    font-family: var(--font-serif);
+    line-height: 1.8;
+    color: var(--theme-text-light);
+}
+
+/* Gallery */
+.product-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+}
+
+/* Editorial */
+.editorial-section {
+    position: relative;
+    height: 80vh;
+    width: 100%;
+    margin-top: 70px;
+    /* Reduced to 10px as requested */
+    overflow: hidden;
+}
+
+.editorial-image {
+    width: 100%;
+    height: 100%;
+}
+
+.editorial-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.editorial-text-overlay {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 2rem;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.editorial-text-overlay h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+/* Reveal Animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s var(--ease-luxury);
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .story-section {
+        text-align: left;
+    }
+}
+
+@media (min-width: 768px) {
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+        /* Return to stable 3-column grid */
+        gap: var(--space-md);
+    }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .cta-btn {
+        padding: 0.8rem 2rem;
+        font-size: 0.75rem;
+    }
+
+    .story-section {
+        padding-top: 6rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .story-title {
+        font-size: 2rem;
+    }
+
+    .story-text {
+        font-size: 1.1rem;
+    }
+
+    .editorial-section {
+        height: 60vh;
+        margin-top: 40px;
+    }
+
+    .editorial-text-overlay {
+        width: 90%;
+        padding: 1.5rem;
+    }
+
+    .editorial-text-overlay h2 {
+        font-size: 1.8rem;
+    }
+}

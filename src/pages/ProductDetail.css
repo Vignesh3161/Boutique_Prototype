@@ -1,0 +1,523 @@
+/* Base Transitions */
+.product-detail-page {
+    opacity: 0;
+    transition: opacity 1s var(--ease-luxury);
+    background-color: var(--color-light);
+    /* Ensure light background for this page */
+    color: var(--color-dark);
+    padding-top: 120px;
+    /* Navbar Clearance */
+}
+
+.product-detail-page.visible {
+    opacity: 1;
+}
+
+/* Unique Split Layout */
+.product-container-unique {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Gallery (Left/Top) */
+.product-gallery-unique {
+    width: 100%;
+}
+
+/* Carousel Styles */
+/* Carousel Styles */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    /* Square on mobile too? Or keep default? User asked for square. */
+    max-height: 80vh;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/* ... existing styles ... */
+
+.product-info-panel {
+    width: 40%;
+    height: auto;
+    /* Allow growth */
+    min-height: 70vh;
+    /* Minimum visual balance */
+    position: sticky;
+    top: 120px;
+    /* Stick below navbar */
+    display: flex;
+    align-items: center;
+    border-left: 1px solid rgba(0, 0, 0, 0.05);
+    padding-bottom: 2rem;
+}
+
+/* Legacy/Fallback */
+.gallery-item {
+    width: 100%;
+    height: 85vh;
+    /* Slightly smaller */
+    overflow: hidden;
+}
+
+.active-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0.8;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.image-pagination {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1rem;
+    z-index: 10;
+}
+
+.pagination-dot {
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.pagination-dot.active {
+    background: #fff;
+    transform: scale(1.2);
+}
+
+.pagination-dot:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+/* Info Panel (Right/Bottom) */
+.product-info-panel {
+    width: 100%;
+    padding: var(--space-lg) var(--space-md);
+    background: var(--color-light);
+}
+
+.sticky-wrapper {
+    /* No sticky on mobile usually */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Typography & Elements */
+.product-header-unique {
+    margin-bottom: var(--space-md);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: var(--space-sm);
+}
+
+.collection-tag {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--color-gold-end);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.title-unique {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    color: var(--color-dark);
+    font-weight: 400;
+}
+
+.price-unique {
+    font-family: var(--font-sans);
+    font-size: 1.25rem;
+    color: var(--color-dark);
+    opacity: 0.8;
+}
+
+.description-unique p {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-dark);
+    margin-bottom: var(--space-md);
+}
+
+/* Actions */
+.actions-unique {
+    margin-bottom: var(--space-lg);
+}
+
+.size-selector-minimal {
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.size-options {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.size-options button {
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    color: #999;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.size-options button:hover,
+.size-options button.active {
+    color: var(--color-dark);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.btn-add-unique {
+    width: 100%;
+    padding: 1.2rem;
+    background: linear-gradient(var(--color-dark), var(--color-dark)) padding-box,
+        var(--gradient-gold) border-box;
+    border: 1px solid transparent;
+    color: var(--color-gold-start);
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.9rem;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+}
+
+/* Clear pseudo-elements if any existed from previous attempts */
+.btn-add-unique::before {
+    display: none;
+}
+
+.btn-add-unique:hover {
+    background: var(--gradient-gold);
+    color: var(--color-dark);
+    border-color: transparent;
+    box-shadow: 0 0 20px rgba(244, 196, 48, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Meta / Accordion */
+.meta-unique details {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+}
+
+.meta-unique summary {
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    list-style: none;
+    /* Hide default arrow */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.meta-unique summary::-webkit-details-marker {
+    display: none;
+}
+
+.meta-unique ul,
+.meta-unique p {
+    padding-top: 1rem;
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    color: black !important;
+    /* Force Black */
+    line-height: 1.6;
+}
+
+.meta-unique ul li {
+    color: black !important;
+    list-style-type: none;
+    /* Optional: remove bullets if they were causing gold issues, or keep them */
+    margin-bottom: 0.5rem;
+}
+
+/* Desktop Split Layout */
+/* desktop split layout */
+@media (min-width: 1024px) {
+    .product-detail-page {
+        padding-top: 75px;
+        /* Further reduced gap */
+    }
+
+    .product-container-unique {
+        flex-direction: row;
+        align-items: flex-start;
+        max-width: 1400px;
+        /* Center content */
+        margin: 0 auto;
+        /* Center content */
+        justify-content: center;
+        /* Ensure columns are centered */
+    }
+
+    .product-gallery-unique {
+        width: 50%;
+        /* Adjust width balance */
+        position: sticky;
+        top: 100px;
+        height: min-content;
+        display: flex;
+        /* Flex to center image in column */
+        justify-content: flex-end;
+        /* Push image slightly right to close gap with content, or center */
+        padding-right: 2rem;
+        /* Gap between image and content */
+    }
+
+    .carousel-container {
+        width: 90%;
+        /* Slightly smaller width */
+        max-width: 650px;
+        aspect-ratio: 3 / 4;
+        /* Taller height (Portrait) */
+        height: auto;
+        margin: 0 auto;
+        /* Centered */
+    }
+
+    .product-info-panel {
+        width: 40%;
+        height: auto;
+        min-height: 120vh;
+        /* Make content column taller than image to force sticky effect */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        border-left: 1px solid rgba(0, 0, 0, 0.05);
+        /* Separator */
+        padding-top: 0;
+        /* Align top with image */
+        padding-left: 3rem;
+        /* Space from separator */
+        padding-bottom: 1rem;
+        /* Reduced from 4rem */
+    }
+
+    /* Image Counter */
+    .image-counter {
+        position: fixed;
+        bottom: 2rem;
+        left: 2rem;
+        z-index: 100;
+        font-family: var(--font-sans);
+        font-size: 0.8rem;
+        color: var(--color-dark);
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        display: flex;
+        gap: 0.5rem;
+        letter-spacing: 0.1em;
+        display: none;
+        /* Hidden for single image layout */
+    }
+
+    .image-counter .divider {
+        color: #ccc;
+    }
+
+    /* Editor's Note */
+    .editors-note {
+        font-size: 0.9rem !important;
+        color: var(--color-dark) !important;
+        border-left: 2px solid var(--color-gold-start);
+        padding-left: 1rem;
+        margin-top: 1rem;
+        font-style: italic;
+    }
+
+    /* Product Navigation */
+    .product-navigation {
+        display: flex;
+        justify-content: space-between;
+        padding: 2rem;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        background: var(--color-light);
+    }
+
+    .product-navigation a {
+        display: flex;
+        flex-direction: column;
+        text-decoration: none;
+        transition: opacity 0.3s ease;
+    }
+
+    .product-navigation a:hover {
+        opacity: 0.6;
+    }
+
+    .next-product {
+        text-align: right;
+    }
+
+    .nav-label {
+        font-family: var(--font-sans);
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: #999;
+        margin-bottom: 0.3rem;
+    }
+
+    .nav-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.2rem;
+        color: var(--color-dark);
+        font-style: italic;
+    }
+}
+
+/* Unique Suggested Products UI */
+.suggested-products {
+    padding: var(--space-lg) var(--space-lg) var(--space-lg);
+    /* Reduced top padding from 2xl */
+    /* Reduced bottom padding */
+    background: #FFFCF5;
+    /* Very subtle warm tint */
+    border-top: 1px solid rgba(184, 135, 70, 0.1);
+}
+
+.suggested-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    margin-bottom: 2.5rem;
+    color: var(--color-dark);
+    font-style: italic;
+    text-align: center;
+    position: relative;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.suggested-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 1px;
+    background: var(--color-gold-end);
+}
+
+/* Unused Arrow styles removed */
+
+.suggested-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 1.5rem;
+    padding-bottom: 2rem;
+    /* Space for scroll / hover effects */
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.suggested-grid::-webkit-scrollbar {
+    display: none;
+    /* Chrome/Safari/Edge */
+}
+
+.suggested-item {
+    max-width: 200px;
+    /* Fixed width for visual consistency */
+    flex: 0 0 auto;
+    /* Don't shrink */
+    scroll-snap-align: start;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.4s ease;
+}
+
+.suggested-item:hover {
+    transform: translateY(-5px);
+}
+
+.suggested-img-wrapper {
+    width: 100%;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.suggested-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s var(--ease-luxury);
+    filter: grayscale(20%);
+}
+
+.suggested-item:hover .suggested-img-wrapper img {
+    transform: scale(1.1);
+    filter: grayscale(0%);
+}
+
+.suggested-info {
+    text-align: center;
+}
+
+.suggested-info h4 {
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: var(--color-dark);
+    margin-bottom: 0.4rem;
+    opacity: 0.8;
+}
+
+.suggested-info span {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    color: var(--color-gold-end);
+    font-style: italic;
+}

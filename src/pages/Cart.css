@@ -1,0 +1,443 @@
+.cart-page {
+    padding-top: 40px;
+    padding-bottom: 60px;
+    background: #FFFCF5;
+    /* Luxury Cream Background */
+    min-height: 100vh;
+}
+
+/* RESET GLOBAL TEXT STYLES FOR CRISPNESS */
+.cart-page h1,
+.cart-page h2,
+.cart-page h3,
+.cart-page p,
+.cart-page a,
+.cart-page span,
+.cart-page div,
+.cart-page label,
+.cart-page select,
+.cart-page input {
+    background: none;
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+    color: var(--color-dark);
+    -webkit-text-fill-color: currentColor;
+    text-shadow: none;
+}
+
+/* Re-apply overrides for specific headers if needed */
+.cart-page .cart-title {
+    color: var(--color-dark);
+}
+
+.cart-layout {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 5rem;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    align-items: start;
+}
+
+/* LEFT: Shopping Cart List */
+.cart-items-container {
+    background: transparent;
+    padding: 1.5rem 0;
+}
+
+.cart-header {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.cart-title {
+    font-size: 2.5rem;
+    font-weight: 400;
+    font-family: var(--font-serif);
+    margin: 0;
+    /* Match Midnight Royale Style */
+    background: var(--gradient-midnight);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.price-header-label {
+    font-size: 0.85rem;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-family: var(--font-sans);
+    padding-right: 0;
+}
+
+.cart-item-row {
+    display: grid;
+    grid-template-columns: 180px 1fr auto;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    align-items: center;
+    /* Vertically center items */
+}
+
+.cart-item-row:last-child {
+    border-bottom: none;
+}
+
+.cart-img {
+    width: 180px;
+    height: 240px;
+    /* Taller, more editorial aspect ratio */
+    object-fit: cover;
+}
+
+.item-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.item-link-title {
+    font-size: 1.5rem;
+    font-weight: 400;
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--color-dark);
+    text-decoration: none;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+}
+
+.item-link-title:hover {
+    color: var(--color-gold-end);
+}
+
+.item-stock {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #007600;
+    /* Keep green for functionality, but stylized? Or maybe Black for luxury? Keeping standard for now per Amazon req */
+    font-family: var(--font-sans);
+}
+
+.item-shipping {
+    font-size: 0.8rem;
+    color: #666;
+    font-family: var(--font-sans);
+}
+
+.item-shipping span {
+    color: var(--color-dark);
+}
+
+.gift-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 0.5rem;
+    font-family: var(--font-sans);
+}
+
+.gift-option input {
+    accent-color: var(--color-dark);
+}
+
+.item-meta {
+    font-size: 0.9rem;
+    color: var(--color-dark);
+    font-family: var(--font-sans);
+}
+
+.item-meta span {
+    color: #666;
+}
+
+.action-row {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.qty-select {
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+    font-family: var(--font-sans);
+    cursor: pointer;
+    color: var(--color-dark);
+}
+
+.qty-select:hover {
+    border-color: var(--color-gold-start);
+}
+
+.action-divider {
+    color: #ddd;
+    font-weight: 300;
+}
+
+.action-link {
+    font-size: 0.75rem;
+    color: #999;
+    text-decoration: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-family: var(--font-sans);
+    transition: color 0.3s;
+}
+
+.action-link:hover {
+    color: var(--color-gold-end);
+    text-decoration: none;
+}
+
+.item-price-col {
+    text-align: right;
+    font-size: 1.4rem;
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--color-dark);
+    font-style: italic;
+    /* align-self: center; */
+    /* Default to center due to row align-items center */
+}
+
+/* RIGHT: Subtotal Card */
+.cart-layout aside {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 120px;
+    /* Adjust based on header height */
+    height: fit-content;
+}
+
+.subtotal-card {
+    background: #fff;
+    width: 400px;
+    padding: 2rem;
+    border: 1px solid rgba(184, 135, 70, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+/* Summary Rows */
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+    font-size: 0.95rem;
+    color: #666;
+    font-family: var(--font-sans);
+}
+
+.summary-row span:last-child {
+    color: var(--color-dark);
+    font-weight: 500;
+}
+
+.summary-divider {
+    height: 1px;
+    background: rgba(0, 0, 0, 0.1);
+    margin: 1.5rem 0;
+}
+
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.4rem;
+    color: var(--color-dark);
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+.checkout-btn {
+    width: 100%;
+    background: #000;
+    /* Gradient Border Trick for rectangular buttons */
+    border: 1px solid transparent;
+    /* Fallback */
+    border-image: linear-gradient(to right, var(--color-gold-start), var(--color-gold-end)) 1;
+    border-radius: 0;
+    /* Important for border-image */
+
+    padding: 1.2rem;
+    font-size: 0.85rem;
+    color: var(--color-gold-start);
+    /* Gold text to match border */
+    /* Alternatively use gradient text if supported, but solid gold is cleaner on black */
+
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+    transition: all 0.4s ease;
+    font-family: var(--font-sans);
+    font-weight: 500;
+}
+
+.checkout-btn:hover {
+    background: linear-gradient(to right, var(--color-gold-start), var(--color-gold-end));
+    color: #000;
+    border: 1px solid transparent;
+    /* Remove border-image effect or keep it invisible */
+    border-image: none;
+    box-shadow: 0 5px 15px rgba(184, 135, 70, 0.4);
+    transform: translateY(-2px);
+    font-weight: 600;
+}
+
+.shipping-note {
+    font-size: 0.8rem;
+    color: #888;
+    margin-bottom: 1rem;
+    font-family: var(--font-sans);
+    font-style: italic;
+}
+
+/* ========================================= */
+/* RESPONSIVE BREAKPOINTS                    */
+/* ========================================= */
+
+/* Tablet & Smaller Laptops (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .cart-page {
+        padding-bottom: 40px;
+        /* Reduced to reduce space before footer */
+    }
+
+    .cart-layout {
+        grid-template-columns: 1fr;
+        /* Stack layout */
+        gap: 2rem;
+        /* Reduced from 3rem */
+        padding: 0 1.5rem;
+    }
+
+    .cart-layout aside {
+        position: relative;
+        /* Remove sticky on smaller screens if content is long */
+        top: 0;
+        width: 100%;
+        max-width: 500px;
+        /* Constrain width when stacked */
+        margin: 0 auto;
+    }
+
+    .subtotal-card {
+        width: 100%;
+        /* Fluid width */
+    }
+}
+
+/* Tablet (max-width: 768px) */
+@media (max-width: 768px) {
+    .cart-page {
+        padding-top: 20px;
+        padding-bottom: 40px;
+    }
+
+    .cart-header {
+        margin-bottom: 1.5rem;
+    }
+
+    .cart-title {
+        font-size: 2rem;
+    }
+
+    .price-header-label {
+        display: none;
+        /* Hide 'Price' label on mobile */
+    }
+
+    /* Stack item row contents */
+    .cart-item-row {
+        grid-template-columns: 100px 1fr;
+        /* Image + Details */
+        grid-template-areas:
+            "image details"
+            "image price";
+        gap: 1rem;
+        padding: 1.5rem 0;
+        align-items: start;
+    }
+
+    .cart-img {
+        grid-area: image;
+        width: 100px;
+        height: 135px;
+    }
+
+    .item-details {
+        grid-area: details;
+    }
+
+    .item-link-title {
+        font-size: 1.1rem;
+        /* Smaller title */
+        margin-bottom: 0.2rem;
+    }
+
+    /* Move price below details or to the side */
+    .item-price-col {
+        grid-area: price;
+        text-align: left;
+        font-size: 1.1rem;
+        margin-top: 0;
+        align-self: start;
+    }
+
+    .action-row {
+        margin-top: 1rem;
+        gap: 0.8rem;
+    }
+
+    .qty-select {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.8rem;
+    }
+
+    .action-link {
+        font-size: 0.65rem;
+    }
+}
+
+/* Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+    .cart-layout {
+        padding: 0 1rem;
+    }
+
+    .action-link {
+        display: none;
+        /* Hide text actions to save space if needed, or keep minimal */
+    }
+
+    /* Show only Remove or essential actions if crowded, 
+       but for now let's wrap them */
+    .action-row {
+        flex-wrap: wrap;
+    }
+
+    .action-link {
+        display: inline-block;
+        /* Keep them but allow wrapping */
+    }
+
+    .checkout-btn {
+        padding: 1rem;
+        font-size: 0.8rem;
+    }
+}

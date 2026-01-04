@@ -1,0 +1,303 @@
+.footer {
+    background-color: var(--color-charcoal);
+    color: var(--color-grey);
+    padding: var(--space-lg) 0 var(--space-md);
+
+    /* Reduced top padding */
+    border-top: 1px solid rgba(139, 174, 102, 0.2);
+    margin-top: 5px;
+    /* Reduced to 5px as requested */
+}
+
+/* Centered Editorial Footer */
+.footer-centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-bottom: var(--space-md);
+    /* Reduced padding */
+}
+
+.footer-large-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 6rem;
+    /* Reduced size */
+    background: linear-gradient(135deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+    /* Rich Luxury Gold */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-style: italic;
+    opacity: 1;
+    /* Ensure full visibility of gradient */
+    margin-bottom: var(--space-md);
+    letter-spacing: -0.02em;
+}
+
+.footer-nav {
+    display: flex;
+    flex-direction: column;
+    /* Vertical Link List */
+    align-items: flex-start;
+    /* Left Align Links */
+    text-align: left;
+    gap: 0.8rem;
+    margin-bottom: 0;
+}
+
+.footer-nav-group {
+    display: flex;
+    flex-direction: row;
+    /* Side-by-side Columns */
+    justify-content: center;
+    gap: 3rem;
+    align-items: flex-start;
+    margin-bottom: var(--space-md);
+    width: 100%;
+    flex-wrap: wrap;
+    /* Safety for smaller screens */
+}
+
+.footer-nav a {
+    color: var(--color-light);
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.8rem;
+    /* Slightly reduced */
+    transition: color 0.3s ease;
+
+    /* List Style Dot */
+    position: relative;
+    padding-left: 1.2rem;
+    display: inline-block;
+}
+
+.footer-nav a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 4px;
+    background-color: var(--color-gold-start);
+    /* Gold Accent Dot */
+    border-radius: 50%;
+    opacity: 0.8;
+    transition: background-color 0.3s ease;
+}
+
+.footer-nav a:hover::before {
+    background-color: white;
+    /* Dot turns white on hover */
+}
+
+.footer-nav a:hover {
+    color: var(--color-gold-start);
+}
+
+.separator {
+    display: none;
+    /* Hidden for vertical layout */
+}
+
+.footer-newsletter-minimal {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: var(--space-lg);
+    /* Reduced margin */
+}
+
+.newsletter-label {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    background: linear-gradient(135deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+    /* Rich Luxury Gold */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.minimal-input-group {
+    display: flex;
+    border-bottom: 1px solid rgba(184, 135, 70, 0.5);
+    padding-bottom: 0.5rem;
+}
+
+.minimal-input-group input {
+    background: none;
+    border: none;
+    color: white;
+    font-family: var(--font-sans);
+    letter-spacing: 0.1em;
+    font-size: 0.9rem;
+    width: 100%;
+    outline: none;
+    text-transform: uppercase;
+}
+
+.minimal-input-group input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.minimal-input-group button {
+    background: none;
+    border: none;
+    color: var(--color-gold-start);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.minimal-input-group button:hover {
+    transform: translateX(5px);
+}
+
+.footer-bottom-minimal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    opacity: 0.6;
+}
+
+.social-minimal {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.social-minimal a {
+    /* Color handled by SVG stroke url */
+    transition: transform 0.3s ease;
+    display: inline-block;
+    /* For transform */
+}
+
+.social-minimal a:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.2);
+    /* Brighten gradient on hover */
+}
+
+.copyright-minimal {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+    .footer {
+        padding-top: 2rem;
+        /* Reduced top padding */
+        padding-bottom: 1rem;
+    }
+
+    .footer-centered {
+        padding-bottom: 1rem;
+    }
+
+    .footer-large-logo {
+        margin-bottom: 2rem;
+        /* Reduced margin */
+        font-size: 4rem;
+        /* Slightly smaller for tablet */
+    }
+
+    .footer-nav-group {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2x2 Grid */
+        column-gap: 2rem;
+        row-gap: 3rem;
+        max-width: 600px;
+        margin-bottom: 2rem;
+        /* Reduced margin */
+    }
+}
+
+/* Tablet & Small Laptop (577px - 992px) */
+@media (min-width: 577px) and (max-width: 992px) {
+    .footer-nav-group {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        justify-items: center;
+        width: auto;
+    }
+
+    .footer-large-logo {
+        font-size: 4.5rem;
+    }
+
+    .footer-nav {
+        align-items: center;
+        text-align: center;
+    }
+}
+
+/* Mobile (< 576px) */
+@media (max-width: 576px) {
+    .footer-large-logo {
+        font-size: 3rem;
+        text-align: center;
+        /* Center the logo itself */
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .footer-centered {
+        align-items: center;
+        /* Center the main wrapper */
+        text-align: center;
+    }
+
+    .footer-nav-group {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: flex-start;
+        /* Keep links left aligned relative to each other */
+        width: fit-content;
+        /* Shrink fit to be centered */
+        margin: 0 auto var(--space-md);
+        /* Center the block */
+        padding-left: 0;
+    }
+
+    .footer-nav {
+        align-items: flex-start;
+        text-align: left;
+        width: auto;
+    }
+
+    .separator {
+        display: none;
+    }
+
+    .footer-newsletter-minimal {
+        padding: 0 1rem;
+        text-align: left;
+        width: 100%;
+        max-width: 320px;
+        /* Constrain width for centering */
+        margin: 0 auto var(--space-lg);
+        /* Center the box */
+    }
+
+    .newsletter-label {
+        text-align: left;
+        display: block;
+        width: 100%;
+    }
+
+    .footer-bottom-minimal {
+        align-items: center;
+        /* Center social icons */
+        padding-left: 0;
+        width: 100%;
+    }
+}
