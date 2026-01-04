@@ -98,7 +98,7 @@ const Home = () => {
                     ))}
                 </div>
                 <div style={{ textAlign: 'center', marginTop: '4rem' }}>
-                    <Link to="/collection" className="cta-btn fade-in" style={{ display: 'inline-block' }}>
+                    <Link to="/" className="cta-btn fade-in" style={{ display: 'inline-block' }}>
                         View All Collections
                     </Link>
                 </div>
@@ -119,3 +119,4 @@ const Home = () => {
 };
 
 export default Home;
+
